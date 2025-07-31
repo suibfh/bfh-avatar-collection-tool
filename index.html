@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アバターコレクションツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="tool-header">
+            <p>Powered by <a href="https://sthenoskallos.com" target="_blank" rel="noopener noreferrer">sthenoskallos.com</a></p>
+        </header>
+        <h1>アバターコレクション</h1>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="アバター名を検索...">
+
+            <div class="filter-group">
+                <label for="rarityFilter">レアリティ:</label>
+                <select id="rarityFilter">
+                    <option value="all">全て</option>
+                    <option value="L">L</option>
+                    <option value="E">E</option>
+                    <option value="R">R</option>
+                    <option value="U">U</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="attributeFilter">属性:</label>
+                <select id="attributeFilter">
+                    <option value="all">全て</option>
+                    <option value="fire">炎</option>
+                    <option value="water">水</option>
+                    <option value="tree">樹</option>
+                    <option value="thunder">雷</option>
+                    <option value="light">光</option>
+                    <option value="dark">闇</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="ownershipFilter">所有状況:</label>
+                <select id="ownershipFilter">
+                    <option value="all">全て</option>
+                    <option value="owned">持っている</option>
+                    <option value="not-owned">持っていない</option>
+                </select>
+            </div>
+            
+            <div class="status-info">
+                <p>所有アバター数: <span id="ownedCount">0</span> / <span id="totalCount">0</span></p>
+            </div>
+        </div>
+
+        <div id="avatarContainer" class="avatar-grid">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

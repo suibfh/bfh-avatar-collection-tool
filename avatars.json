@@ -1,0 +1,44 @@
+[
+  {
+    "id": "L_fire_avatar_001",
+    "filename": "L_fire_avatar_001.png",
+    "name_ja": "ヴァルガス",
+    "rarity": "L",
+    "attribute": "fire"
+  },
+  {
+    "id": "E_water_avatar_002",
+    "filename": "E_water_avatar_002.png",
+    "name_ja": "セレナ",
+    "rarity": "E",
+    "attribute": "water"
+  },
+  {
+    "id": "R_tree_avatar_003",
+    "filename": "R_tree_avatar_003.png",
+    "name_ja": "ランセル",
+    "rarity": "R",
+    "attribute": "tree"
+  },
+  {
+    "id": "U_thunder_avatar_004",
+    "filename": "U_thunder_avatar_004.png",
+    "name_ja": "エゼル",
+    "rarity": "U",
+    "attribute": "thunder"
+  },
+  {
+    "id": "L_light_avatar_005",
+    "filename": "L_light_avatar_005.png",
+    "name_ja": "アトロ",
+    "rarity": "L",
+    "attribute": "light"
+  },
+  {
+    "id": "L_dark_avatar_006",
+    "filename": "L_dark_avatar_006.png",
+    "name_ja": "マグルス",
+    "rarity": "L",
+    "attribute": "dark"
+  }
+]

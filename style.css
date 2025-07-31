@@ -1,0 +1,211 @@
+/* 全体的なリセットと基本スタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* ヘッダーのスタイル */
+.tool-header {
+    text-align: right;
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.tool-header a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.tool-header a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* 検索・フィルターUIのスタイル */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center; /* 中央寄せ */
+}
+
+.controls input[type="text"] {
+    flex-grow: 1; /* 検索ボックスを広げる */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    min-width: 150px; /* 最小幅 */
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.controls label {
+    font-weight: bold;
+    color: #555;
+}
+
+.controls select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1em;
+}
+
+.status-info {
+    text-align: center;
+    width: 100%; /* 全幅を使う */
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+/* アバターグリッドのスタイル */
+.avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* 128px + padding */
+    gap: 15px;
+    justify-content: center; /* グリッドアイテムを中央寄せ */
+}
+
+/* 各アバターアイテムのスタイル */
+.avatar-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 画像と名前が上下に均等配置されるように */
+    height: 100%; /* 親グリッドアイテムの高さに合わせる */
+}
+
+.avatar-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-item img {
+    max-width: 100%; /* コンテナに合わせて画像を調整 */
+    height: auto;
+    display: block;
+    margin: 0 auto 8px auto; /* 画像の下に余白 */
+    border-radius: 4px;
+    /* 画像サイズのばらつき対応 */
+    width: 128px; /* 基準サイズに固定 */
+    height: 128px; /* 基準サイズに固定 */
+    object-fit: contain; /* 縦横比を保ちつつ、指定サイズ内に収める */
+    background-color: #fff; /* 背景色があれば画像の透明部分が目立たない */
+    padding: 5px; /* 画像と枠線の間に少し余白 */
+    border: 1px solid #eee;
+}
+
+.avatar-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+    font-weight: bold;
+    word-break: break-all; /* 長い名前がはみ出さないように */
+}
+
+/* 所有状況の視覚的表現 */
+.avatar-item.owned {
+    background-color: #d4edda; /* 薄い緑 */
+    border-color: #28a745; /* 濃い緑 */
+}
+
+/* クリック時のグレー化 */
+.avatar-item.owned.gray-effect {
+    opacity: 0.6; /* 少し透過 */
+    background-color: #e0e0e0; /* グレーっぽい背景色 */
+    border-color: #999;
+}
+.avatar-item:not(.owned).gray-effect { /* 未所有でクリックされた場合 */
+    opacity: 0.6;
+    background-color: #e0e0e0;
+    border-color: #999;
+}
+
+
+/* 属性とレアリティの表示 (JSで要素を追加後、ここにスタイルを追加) */
+.avatar-meta {
+    font-size: 0.75em;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .controls input[type="text"] {
+        width: 100%;
+    }
+
+    .filter-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .avatar-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* スマホでは小さめに */
+        gap: 10px;
+    }
+
+    .avatar-item img {
+        width: 100px; /* スマホでの画像サイズ調整 */
+        height: 100px;
+    }
+
+    .avatar-item p {
+        font-size: 0.85em;
+    }
+}
