@@ -97,6 +97,9 @@ h1 {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* 128px + padding */
     gap: 15px;
     justify-content: center; /* グリッドアイテムを中央寄せ */
+    /* ↓追加または修正↓ */
+    margin: 0 auto; /* グリッド全体を中央に配置 */
+    max-width: 100%; /* 親要素からはみ出さないように */
 }
 
 /* 各アバターアイテムのスタイル */
@@ -113,6 +116,8 @@ h1 {
     flex-direction: column;
     justify-content: space-between; /* 画像と名前が上下に均等配置されるように */
     height: 100%; /* 親グリッドアイテムの高さに合わせる */
+    /* ↓修正↓ */
+    align-items: center; /* アイテム内のコンテンツ（画像、名前など）を中央揃え */
 }
 
 .avatar-item:hover {
@@ -124,7 +129,8 @@ h1 {
     max-width: 100%; /* コンテナに合わせて画像を調整 */
     height: auto;
     display: block;
-    margin: 0 auto 8px auto; /* 画像の下に余白 */
+    /* ↓修正↓ */
+    margin: 0 auto 8px auto; /* 上下は余白なし、左右自動で中央寄せ、下部に8pxの余白 */
     border-radius: 4px;
     /* 画像サイズのばらつき対応 */
     width: 128px; /* 基準サイズに固定 */
@@ -140,7 +146,9 @@ h1 {
     font-size: 0.9em;
     color: #555;
     font-weight: bold;
-    word-break: break-all; /* 長い名前がはみ出さないように */
+    /* ↓修正↓ */
+    word-break: break-word; /* 長い単語でも強制的に改行 */
+    line-height: 1.2;      /* 行間の調整 */
 }
 
 /* 所有状況の視覚的表現 */
@@ -168,6 +176,34 @@ h1 {
     color: #888;
     margin-top: 5px;
 }
+
+/* ↓新しく追加するレアリティ見出しと属性見出しのスタイル↓ */
+/* レアリティ見出しのスタイル */
+.rarity-heading {
+    text-align: center;
+    margin-top: 30px;    /* 上の要素との間隔 */
+    margin-bottom: 15px; /* 下のアバターとの間隔 */
+    color: #4CAF50;      /* 緑系の色 */
+    font-size: 1.6em;
+    border-bottom: 2px solid #4CAF50; /* 下線 */
+    padding-bottom: 5px; /* 下線とテキストの間隔 */
+    width: 100%; /* 全幅を使用 */
+    box-sizing: border-box; /* paddingやborderをwidthに含める */
+}
+
+/* 属性見出しのスタイル */
+.attribute-heading {
+    text-align: center;
+    margin-top: 20px;    /* 上の要素との間隔 */
+    margin-bottom: 10px; /* 下のアバターとの間隔 */
+    color: #607D8B;      /* グレー系の色 */
+    font-size: 1.2em;
+    padding-left: 10px; /* 少し左に寄せる */
+    border-left: 5px solid #607D8B; /* 左側に縦線 */
+    width: 100%; /* 全幅を使用 */
+    box-sizing: border-box; /* paddingやborderをwidthに含める */
+}
+
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
