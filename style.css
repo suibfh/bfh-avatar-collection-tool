@@ -95,11 +95,10 @@ h1 {
 .avatar-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* 128px + padding */
-    gap: 15px;
-    justify-content: center; /* グリッドアイテムを中央寄せ */
-    /* ↓追加または修正↓ */
-    margin: 0 auto; /* グリッド全体を中央に配置 */
-    max-width: 100%; /* 親要素からはみ出さないように */
+    gap: 10px; /* ここを15pxから10pxに変更してスペースを詰めます */
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 /* 各アバターアイテムのスタイル */
@@ -107,17 +106,17 @@ h1 {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 10px;
+    padding: 5px; /* ここを10pxから5pxに変更してスペースを詰めます */
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* 画像と名前が上下に均等配置されるように */
-    height: 100%; /* 親グリッドアイテムの高さに合わせる */
-    /* ↓修正↓ */
-    align-items: center; /* アイテム内のコンテンツ（画像、名前など）を中央揃え */
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box; /* ここにbox-sizingを追加します */
 }
 
 .avatar-item:hover {
@@ -126,82 +125,78 @@ h1 {
 }
 
 .avatar-item img {
-    max-width: 100%; /* コンテナに合わせて画像を調整 */
+    max-width: 100%;
     height: auto;
     display: block;
-    /* ↓修正↓ */
-    margin: 0 auto 8px auto; /* 上下は余白なし、左右自動で中央寄せ、下部に8pxの余白 */
+    margin: 0 auto 5px auto; /* ここを8pxから5pxに変更してスペースを詰めます */
     border-radius: 4px;
-    /* 画像サイズのばらつき対応 */
-    width: 128px; /* 基準サイズに固定 */
-    height: 128px; /* 基準サイズに固定 */
-    object-fit: contain; /* 縦横比を保ちつつ、指定サイズ内に収める */
-    background-color: #fff; /* 背景色があれば画像の透明部分が目立たない */
-    padding: 5px; /* 画像と枠線の間に少し余白 */
+    width: 100%; /* スマホでは100%に調整してはみ出しを改善 */
+    height: auto; /* 高さを自動調整 */
+    object-fit: contain;
+    background-color: #fff;
+    padding: 5px;
     border: 1px solid #eee;
+    box-sizing: border-box; /* box-sizingを追加します */
 }
 
 .avatar-item p {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.8em; /* ここを0.9emから0.8emに変更してスペースを詰めます */
     color: #555;
     font-weight: bold;
-    /* ↓修正↓ */
-    word-break: break-word; /* 長い単語でも強制的に改行 */
-    line-height: 1.2;      /* 行間の調整 */
+    word-break: break-word;
+    line-height: 1.2;
 }
 
 /* 所有状況の視覚的表現 */
 .avatar-item.owned {
-    background-color: #d4edda; /* 薄い緑 */
-    border-color: #28a745; /* 濃い緑 */
+    background-color: #d4edda;
+    border-color: #28a745;
 }
 
 /* クリック時のグレー化 */
 .avatar-item.owned.gray-effect {
-    opacity: 0.6; /* 少し透過 */
-    background-color: #e0e0e0; /* グレーっぽい背景色 */
+    opacity: 0.6;
+    background-color: #e0e0e0;
     border-color: #999;
 }
-.avatar-item:not(.owned).gray-effect { /* 未所有でクリックされた場合 */
+.avatar-item:not(.owned).gray-effect {
     opacity: 0.6;
     background-color: #e0e0e0;
     border-color: #999;
 }
 
 
-/* 属性とレアリティの表示 (JSで要素を追加後、ここにスタイルを追加) */
+/* 属性とレアリティの表示 */
 .avatar-meta {
-    font-size: 0.75em;
+    font-size: 0.7em; /* ここを0.75emから0.7emに変更してスペースを詰めます */
     color: #888;
-    margin-top: 5px;
+    margin-top: 3px; /* ここを5pxから3pxに変更してスペースを詰めます */
 }
 
-/* ↓新しく追加するレアリティ見出しと属性見出しのスタイル↓ */
-/* レアリティ見出しのスタイル */
+/* レアリティ見出しと属性見出しのスタイル */
 .rarity-heading {
     text-align: center;
-    margin-top: 30px;    /* 上の要素との間隔 */
-    margin-bottom: 15px; /* 下のアバターとの間隔 */
-    color: #4CAF50;      /* 緑系の色 */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #4CAF50;
     font-size: 1.6em;
-    border-bottom: 2px solid #4CAF50; /* 下線 */
-    padding-bottom: 5px; /* 下線とテキストの間隔 */
-    width: 100%; /* 全幅を使用 */
-    box-sizing: border-box; /* paddingやborderをwidthに含める */
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* 属性見出しのスタイル */
 .attribute-heading {
     text-align: center;
-    margin-top: 20px;    /* 上の要素との間隔 */
-    margin-bottom: 10px; /* 下のアバターとの間隔 */
-    color: #607D8B;      /* グレー系の色 */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #607D8B;
     font-size: 1.2em;
-    padding-left: 10px; /* 少し左に寄せる */
-    border-left: 5px solid #607D8B; /* 左側に縦線 */
-    width: 100%; /* 全幅を使用 */
-    box-sizing: border-box; /* paddingやborderをwidthに含める */
+    padding-left: 10px;
+    border-left: 5px solid #607D8B;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -232,13 +227,20 @@ h1 {
     }
 
     .avatar-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* スマホでは小さめに */
+        /* ここを修正して、スマホで画像がはみ出さないようにします */
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 10px;
+        padding: 0 5px; /* 画面端との余白を追加 */
+    }
+
+    .avatar-item {
+        padding: 5px; /* スマホでもpaddingを5pxに統一 */
+        border: 1px solid #ddd;
     }
 
     .avatar-item img {
-        width: 100px; /* スマホでの画像サイズ調整 */
-        height: 100px;
+        width: 100%; /* 親要素の幅いっぱいに広げます */
+        height: auto; /* 高さを自動調整 */
     }
 
     .avatar-item p {
