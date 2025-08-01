@@ -88,69 +88,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (avatarsToRender.length === 0) {
             avatarContainer.innerHTML = '<p style="text-align: center; color: #777;">条件に合うアバターが見つかりませんでした。</p>';
-            // WordPress埋め込み時の高さ調整のために、ここでコンテナの高さも考慮する必要があるかもしれません。
-            // 必要であれば、親のiframeの高さを伝えるメッセージを送信するなど
             return;
         }
 
-        // 現在のレアリティと属性を追跡し、見出しを挿入
         let currentRarity = null;
         let currentAttribute = null;
 
+        let currentRarityGroup;
+        let currentAttributeGroup;
+
         avatarsToRender.forEach(avatar => {
-            // レアリティ見出しの挿入
             if (currentRarity !== avatar.rarity) {
                 currentRarity = avatar.rarity;
-                currentAttribute = null; // レアリティが変わったら属性もリセット
+                currentAttribute = null;
+
+                // 新しいレアリティグループ用のコンテナを作成
+                const rarityGroupContainer = document.createElement('div');
+                rarityGroupContainer.className = 'rarity-group-container';
+                avatarContainer.appendChild(rarityGroupContainer);
+                currentRarityGroup = rarityGroupContainer;
+
+                // レアリティ見出しを作成
                 const rarityHeading = document.createElement('h2');
                 rarityHeading.className = 'rarity-heading';
                 rarityHeading.textContent = `【${avatar.rarity} レアリティ】`;
-                avatarContainer.appendChild(rarityHeading);
+                currentRarityGroup.appendChild(rarityHeading);
             }
 
-            // 属性見出しの挿入 (レアリティ内での属性順)
             if (currentAttribute !== avatar.attribute) {
                 currentAttribute = avatar.attribute;
+
+                // 新しい属性グループ用のコンテナを作成
+                const attributeGroupContainer = document.createElement('div');
+                attributeGroupContainer.className = 'attribute-group-container';
+                currentRarityGroup.appendChild(attributeGroupContainer);
+                currentAttributeGroup = attributeGroupContainer;
+
+                // 属性見出しを作成
                 const attributeHeading = document.createElement('h3');
                 attributeHeading.className = 'attribute-heading';
-                attributeHeading.textContent = `　-- ${getAttributeName(avatar.attribute)}属性 --`;
-                avatarContainer.appendChild(attributeHeading);
+                attributeHeading.textContent = `-- ${getAttributeName(avatar.attribute)}属性 --`;
+                currentAttributeGroup.appendChild(attributeHeading);
+
+                // 新しいアバターグリッドを作成
+                const newAvatarGrid = document.createElement('div');
+                newAvatarGrid.className = 'avatar-grid';
+                currentAttributeGroup.appendChild(newAvatarGrid);
             }
 
-            const avatarItem = document.createElement('div');
-            avatarItem.className = 'avatar-item';
-            avatarItem.dataset.id = avatar.id; // データIDを設定
-            avatarItem.dataset.rarity = avatar.rarity;
-            avatarItem.dataset.attribute = avatar.attribute;
+            // アバターアイテムを作成し、適切なグリッドに追加
+            const avatarGrid = currentAttributeGroup.querySelector('.avatar-grid');
+            if (avatarGrid) {
+                const avatarItem = document.createElement('div');
+                avatarItem.className = 'avatar-item';
+                avatarItem.dataset.id = avatar.id;
+                avatarItem.dataset.rarity = avatar.rarity;
+                avatarItem.dataset.attribute = avatar.attribute;
 
-            if (ownedAvatars.has(avatar.id)) {
-                avatarItem.classList.add('owned');
+                if (ownedAvatars.has(avatar.id)) {
+                    avatarItem.classList.add('owned');
+                }
+
+                avatarItem.innerHTML = `
+                    <img src="./images/${avatar.filename}" alt="${avatar.name_ja}">
+                    <p>${avatar.name_ja}</p>
+                    <div class="avatar-meta">
+                        <span>${avatar.rarity}</span> | <span>${getAttributeName(avatar.attribute)}</span>
+                    </div>
+                `;
+
+                avatarItem.addEventListener('click', () => toggleOwnership(avatar.id, avatarItem));
+                avatarGrid.appendChild(avatarItem);
             }
-
-            avatarItem.innerHTML = `
-                <img src="./images/${avatar.filename}" alt="${avatar.name_ja}">
-                <p>${avatar.name_ja}</p>
-                <div class="avatar-meta">
-                    <span>${avatar.rarity}</span> | <span>${getAttributeName(avatar.attribute)}</span>
-                </div>
-            `;
-
-            avatarItem.addEventListener('click', () => toggleOwnership(avatar.id, avatarItem));
-            avatarContainer.appendChild(avatarItem);
         });
-
-        // アバター表示後のコンテンツの高さをWordPressに通知する（iframe埋め込み用）
-        // この処理は、WordPress側で `message` イベントをリッスンし、iframeの高さを動的に変更するJavaScriptが必要です。
-        // ここでは、iframeの親ウィンドウにメッセージを送信する例を示します。
-        // WordPress側の実装例は後述します。
-        // if (window.parent) {
-        //     const contentHeight = document.documentElement.scrollHeight; // HTML要素全体の高さを取得
-        //     window.parent.postMessage({
-        //         type: 'setIframeHeight',
-        //         height: contentHeight + 20 // 若干の余白を持たせる
-        //     }, '*'); // '*' は任意のオリジンからのメッセージを許可。セキュリティを考慮する場合は、WordPressサイトのURLを指定
-        // }
-        // 一旦コメントアウトしておきます。まずは動くことを優先し、必要であれば後で実装しましょう。
     }
 
     /**
@@ -166,14 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ownedAvatars.add(avatarId);
             avatarItemElement.classList.add('owned');
         }
-        saveOwnedAvatars(); // ローカルストレージに保存
-        updateCounts(); // カウントを更新
+        saveOwnedAvatars();
+        updateCounts();
 
-        // クリック時のグレーエフェクト
         avatarItemElement.classList.add('gray-effect');
         setTimeout(() => {
             avatarItemElement.classList.remove('gray-effect');
-        }, 150); // 150ms後にエフェクトを解除
+        }, 150);
     }
 
     /**
@@ -199,24 +208,19 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function updateCounts(displayedCount = allAvatars.length) {
         let currentOwnedDisplayed = 0;
-        // 現在表示されているアバターの中から所有済みのものを数える
         allAvatars.filter(avatar => {
             const searchText = searchInput.value.toLowerCase();
             const selectedRarity = rarityFilter.value;
             const selectedAttribute = attributeFilter.value;
             const isOwned = ownedAvatars.has(avatar.id);
-
-            // 表示中のフィルタを考慮してカウント
             if (searchText && !avatar.name_ja.toLowerCase().includes(searchText)) return false;
             if (selectedRarity !== 'all' && avatar.rarity !== selectedRarity) return false;
             if (selectedAttribute !== 'all' && avatar.attribute !== selectedAttribute) return false;
-
-            return isOwned; // 所有しているものだけカウント
+            return isOwned;
         }).forEach(() => currentOwnedDisplayed++);
 
-
         ownedCountSpan.textContent = currentOwnedDisplayed;
-        totalCountSpan.textContent = displayedCount; // 表示されているアバターの総数
+        totalCountSpan.textContent = displayedCount;
     }
 
     /**
@@ -233,9 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'light': '光',
             'dark': '闇'
         };
-        return attributeMap[attributeKey] || attributeKey; // マップにない場合はそのまま返す
+        return attributeMap[attributeKey] || attributeKey;
     }
-
 
     // イベントリスナーの設定
     searchInput.addEventListener('input', updateAvatarDisplay);
@@ -252,15 +255,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const bodyHeight = document.body.scrollHeight;
             window.parent.postMessage({
                 height: bodyHeight
-            }, 'https://sthenoskallos.com/avatar-collection81/');
+            }, 'https://sthenoskallos.com');
         }
     }
 
     // ページの読み込み時と、コンテンツ変更時に高さを伝える
     window.addEventListener('load', postHeightMessage);
-    new MutationObserver(postHeightMessage).observe(document.body, {
+    const observer = new MutationObserver(postHeightMessage);
+    observer.observe(document.body, {
         attributes: true,
         childList: true,
         subtree: true
     });
+    // フィルターや検索が行われた際にも高さを伝える
+    rarityFilter.addEventListener('change', postHeightMessage);
+    attributeFilter.addEventListener('change', postHeightMessage);
+    ownershipFilter.addEventListener('change', postHeightMessage);
+    searchInput.addEventListener('input', postHeightMessage);
 });

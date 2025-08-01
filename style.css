@@ -51,16 +51,16 @@ h1 {
     background-color: #e9ecef;
     border-radius: 5px;
     align-items: center;
-    justify-content: center; /* 中央寄せ */
+    justify-content: center;
 }
 
 .controls input[type="text"] {
-    flex-grow: 1; /* 検索ボックスを広げる */
+    flex-grow: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
-    min-width: 150px; /* 最小幅 */
+    min-width: 150px;
 }
 
 .filter-group {
@@ -84,7 +84,7 @@ h1 {
 
 .status-info {
     text-align: center;
-    width: 100%; /* 全幅を使う */
+    width: 100%;
     font-size: 1.1em;
     font-weight: bold;
     color: #007bff;
@@ -94,8 +94,8 @@ h1 {
 /* アバターグリッドのスタイル */
 .avatar-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* 128px + padding */
-    gap: 10px; /* ここを15pxから10pxに変更してスペースを詰めます */
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
     justify-content: center;
     margin: 0 auto;
     max-width: 100%;
@@ -106,7 +106,7 @@ h1 {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 5px; /* ここを10pxから5pxに変更してスペースを詰めます */
+    padding: 5px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     cursor: pointer;
@@ -116,7 +116,7 @@ h1 {
     justify-content: space-between;
     height: 100%;
     align-items: center;
-    box-sizing: border-box; /* ここにbox-sizingを追加します */
+    box-sizing: border-box;
 }
 
 .avatar-item:hover {
@@ -128,20 +128,20 @@ h1 {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto 5px auto; /* ここを8pxから5pxに変更してスペースを詰めます */
+    margin: 0 auto 5px auto;
     border-radius: 4px;
-    width: 100%; /* スマホでは100%に調整してはみ出しを改善 */
-    height: auto; /* 高さを自動調整 */
+    width: 100%;
+    height: auto;
     object-fit: contain;
     background-color: #fff;
     padding: 5px;
     border: 1px solid #eee;
-    box-sizing: border-box; /* box-sizingを追加します */
+    box-sizing: border-box;
 }
 
 .avatar-item p {
     margin: 0;
-    font-size: 0.8em; /* ここを0.9emから0.8emに変更してスペースを詰めます */
+    font-size: 0.8em;
     color: #555;
     font-weight: bold;
     word-break: break-word;
@@ -169,41 +169,40 @@ h1 {
 
 /* 属性とレアリティの表示 */
 .avatar-meta {
-    font-size: 0.7em; /* ここを0.75emから0.7emに変更してスペースを詰めます */
+    font-size: 0.7em;
     color: #888;
-    margin-top: 3px; /* ここを5pxから3pxに変更してスペースを詰めます */
+    margin-top: 3px;
 }
 
-/* レアリティ見出しと属性見出しのスタイル */
+/* ↓見出しを横並びにするための新しいコンテナのスタイルを追加↓ */
+.heading-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px; /* 見出し間の余白 */
+    margin-bottom: 15px; /* 下のアバターグリッドとの余白 */
+}
+
+/* レアリティ見出しのスタイル */
 .rarity-heading {
-    /* ↓ここから修正・追加↓ */
-    display: inline-block; /* 横並びにする */
-    width: auto; /* 幅を内容に合わせて自動調整 */
-    margin-right: 20px; /* 見出し間の余白 */
-    /* ↑ここまで修正・追加↑ */
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin: 0; /* 元のマージンをリセット */
     color: #4CAF50;
     font-size: 1.6em;
     border-bottom: 2px solid #4CAF50;
     padding-bottom: 5px;
+    width: auto; /* 幅を自動調整 */
     box-sizing: border-box;
 }
 
 .attribute-heading {
-    /* ↓ここから修正・追加↓ */
-    display: inline-block; /* 横並びにする */
-    width: auto; /* 幅を内容に合わせて自動調整 */
-    margin-right: 15px; /* 見出し間の余白 */
-    /* ↑ここまで修正・追加↑ */
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 0; /* 元のマージンをリセット */
     color: #607D8B;
     font-size: 1.2em;
     padding-left: 10px;
     border-left: 5px solid #607D8B;
+    width: auto; /* 幅を自動調整 */
     box-sizing: border-box;
 }
 
@@ -234,20 +233,19 @@ h1 {
     }
 
     .avatar-grid {
-        /* ここを修正して、スマホで画像がはみ出さないようにします */
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 10px;
-        padding: 0 5px; /* 画面端との余白を追加 */
+        padding: 0 5px;
     }
 
     .avatar-item {
-        padding: 5px; /* スマホでもpaddingを5pxに統一 */
+        padding: 5px;
         border: 1px solid #ddd;
     }
 
     .avatar-item img {
-        width: 100%; /* 親要素の幅いっぱいに広げます */
-        height: auto; /* 高さを自動調整 */
+        width: 100%;
+        height: auto;
     }
 
     .avatar-item p {
