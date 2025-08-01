@@ -176,6 +176,11 @@ h1 {
 
 /* レアリティ見出しと属性見出しのスタイル */
 .rarity-heading {
+    /* ↓ここから修正・追加↓ */
+    display: inline-block; /* 横並びにする */
+    width: auto; /* 幅を内容に合わせて自動調整 */
+    margin-right: 20px; /* 見出し間の余白 */
+    /* ↑ここまで修正・追加↑ */
     text-align: center;
     margin-top: 30px;
     margin-bottom: 15px;
@@ -183,11 +188,15 @@ h1 {
     font-size: 1.6em;
     border-bottom: 2px solid #4CAF50;
     padding-bottom: 5px;
-    width: 100%;
     box-sizing: border-box;
 }
 
 .attribute-heading {
+    /* ↓ここから修正・追加↓ */
+    display: inline-block; /* 横並びにする */
+    width: auto; /* 幅を内容に合わせて自動調整 */
+    margin-right: 15px; /* 見出し間の余白 */
+    /* ↑ここまで修正・追加↑ */
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -195,10 +204,8 @@ h1 {
     font-size: 1.2em;
     padding-left: 10px;
     border-left: 5px solid #607D8B;
-    width: 100%;
     box-sizing: border-box;
 }
-
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
