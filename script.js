@@ -252,9 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 親ページに高さを伝える関数
     function postHeightMessage() {
         if (window.parent) {
-            const bodyHeight = document.body.scrollHeight;
+            // bodyではなく、html要素の高さを取得する
+            const docHeight = document.documentElement.scrollHeight;
             window.parent.postMessage({
-                height: bodyHeight
+                height: docHeight
             }, 'https://sthenoskallos.com');
         }
     }
