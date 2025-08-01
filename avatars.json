@@ -41,4 +41,19 @@
     "rarity": "L",
     "attribute": "dark"
   }
+  ,
+  {
+    "id": "L_dark_avatar_007",
+    "filename": "L_dark_avatar_007.png",
+    "name_ja": "赫炎竜神ヴォルラーダ",
+    "rarity": "L",
+    "attribute": "fire"
+  },
+  {
+    "id": "L_dark_avatar_008",
+    "filename": "L_dark_avatar_008.png",
+    "name_ja": "烈煌の覇暁神アヴァン",
+    "rarity": "L",
+    "attribute": "fire"
+  }
 ]
