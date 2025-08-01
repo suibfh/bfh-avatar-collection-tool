@@ -1,58 +1,87 @@
 [
   {
-    "id": "L_fire_avatar_001",
-    "filename": "L_fire_avatar_001.png",
-    "name_ja": "ヴァルガス",
+    "id": "1_volarda",
+    "filename": "1_volarda.png",
+    "name_ja": "ヴォルラーダ",
     "rarity": "L",
     "attribute": "fire"
   },
   {
-    "id": "E_water_avatar_002",
-    "filename": "E_water_avatar_002.png",
-    "name_ja": "セレナ",
+    "id": "2_avant",
+    "filename": "2_avant.png",
+    "name_ja": "アヴァン",
     "rarity": "E",
     "attribute": "water"
   },
   {
-    "id": "R_tree_avatar_003",
-    "filename": "R_tree_avatar_003.png",
-    "name_ja": "ランセル",
+    "id": "3_reda",
+    "filename": "3_reda.png",
+    "name_ja": "レダ",
     "rarity": "R",
     "attribute": "tree"
   },
   {
-    "id": "U_thunder_avatar_004",
-    "filename": "U_thunder_avatar_004.png",
-    "name_ja": "エゼル",
+    "id": "4_kulyuk",
+    "filename": "4_kulyuk.png",
+    "name_ja": "クリューク",
     "rarity": "U",
     "attribute": "thunder"
   },
   {
-    "id": "L_light_avatar_005",
-    "filename": "L_light_avatar_005.png",
-    "name_ja": "アトロ",
+    "id": "5_agnia",
+    "filename": "5_agnia.png",
+    "name_ja": "アグネア",
     "rarity": "L",
     "attribute": "light"
   },
   {
-    "id": "L_dark_avatar_006",
-    "filename": "L_dark_avatar_006.png",
-    "name_ja": "マグルス",
+    "id": "6_ludero",
+    "filename": "6_ludero.png",
+    "name_ja": "ルデロ",
     "rarity": "L",
-    "attribute": "dark"
+    "attribute": "fire"
   }
   ,
   {
-    "id": "L_dark_avatar_007",
-    "filename": "L_dark_avatar_007.png",
-    "name_ja": "赫炎竜神ヴォルラーダ",
+    "id": "7_serath",
+    "filename": "7_serath.png",
+    "name_ja": "ゼラス",
     "rarity": "L",
     "attribute": "fire"
   },
   {
-    "id": "L_dark_avatar_008",
-    "filename": "L_dark_avatar_008.png",
-    "name_ja": "烈煌の覇暁神アヴァン",
+    "id": "8_baragan",
+    "filename": "8_baragan.png",
+    "name_ja": "バラガン",
+    "rarity": "L",
+    "attribute": "fire"
+  },
+  {
+    "id": "9_shusui",
+    "filename": "9_shusui.png",
+    "name_ja": "シュスイ",
+    "rarity": "L",
+    "attribute": "fire"
+  },
+  {
+    "id": "10_sharon",
+    "filename": "10_sharon.png",
+    "name_ja": "シャロン",
+    "rarity": "L",
+    "attribute": "fire"
+  }
+  ,
+  {
+    "id": "11_lava",
+    "filename": "11_lava.png",
+    "name_ja": "ラヴァ",
+    "rarity": "L",
+    "attribute": "fire"
+  },
+  {
+    "id": "12_vargas",
+    "filename": "12_vargas.png",
+    "name_ja": "ヴァルガス",
     "rarity": "L",
     "attribute": "fire"
   }
