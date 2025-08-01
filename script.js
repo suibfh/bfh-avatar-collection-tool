@@ -245,4 +245,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初期化
     initializeAvatars();
+
+    // 親ページに高さを伝える関数
+    function postHeightMessage() {
+        if (window.parent) {
+            const bodyHeight = document.body.scrollHeight;
+            window.parent.postMessage({
+                height: bodyHeight
+            }, 'https://sthenoskallos.com/avatar-collection81/');
+        }
+    }
+
+    // ページの読み込み時と、コンテンツ変更時に高さを伝える
+    window.addEventListener('load', postHeightMessage);
+    new MutationObserver(postHeightMessage).observe(document.body, {
+        attributes: true,
+        childList: true,
+        subtree: true
+    });
 });
