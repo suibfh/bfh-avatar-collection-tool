@@ -10,29 +10,29 @@
     "id": "2_avant",
     "filename": "2_avant.png",
     "name_ja": "アヴァン",
-    "rarity": "E",
-    "attribute": "water"
+    "rarity": "L",
+    "attribute": "fire"
   },
   {
     "id": "3_reda",
     "filename": "3_reda.png",
     "name_ja": "レダ",
-    "rarity": "R",
-    "attribute": "tree"
+    "rarity": "L",
+    "attribute": "fire"
   },
   {
     "id": "4_kulyuk",
     "filename": "4_kulyuk.png",
     "name_ja": "クリューク",
-    "rarity": "U",
-    "attribute": "thunder"
+    "rarity": "L",
+    "attribute": "fire"
   },
   {
     "id": "5_agnia",
     "filename": "5_agnia.png",
     "name_ja": "アグネア",
     "rarity": "L",
-    "attribute": "light"
+    "attribute": "fire"
   },
   {
     "id": "6_ludero",
@@ -84,5 +84,166 @@
     "name_ja": "ヴァルガス",
     "rarity": "L",
     "attribute": "fire"
+  },
+  {
+    "id": "13_medina",
+    "filename": "13_medina.png",
+    "name_ja": "メディナ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "14_quartz",
+    "filename": "14_quartz.png",
+    "name_ja": "コルツ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "15_hugh",
+    "filename": "15_hugh.png",
+    "name_ja": "ユーグ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "16_savia",
+    "filename": "16_savia.png",
+    "name_ja": "サヴィア",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "17_stein",
+    "filename": "17_stein.png",
+    "name_ja": "ステイン",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "18_zeleste",
+    "filename": "18_zeleste.png",
+    "name_ja": "ゼレスト",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "19_amu-yunos",
+    "filename": "19_amu-yunos.png",
+    "name_ja": "アム=ユノス",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "20_sheena",
+    "filename": "20_sheena.png",
+    "name_ja": "シーナ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "21_kishou",
+    "filename": "21_kishou.png",
+    "name_ja": "キショウ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "22_nigel",
+    "filename": "22_nigel.png",
+    "name_ja": "ナイゼル",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "23_lucina",
+    "filename": "23_lucina.png",
+    "name_ja": "ルキナ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "24_selena",
+    "filename": "24_selena.png",
+    "name_ja": "セレナ",
+    "rarity": "L",
+    "attribute": "water"
+  },
+  {
+    "id": "25_ragshelm",
+    "filename": "25_ragshelm.png",
+    "name_ja": "ラグシェルム",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "26_dion",
+    "filename": "26_dion.png",
+    "name_ja": "ディオン",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "27_toutetsu",
+    "filename": "27_toutetsu.png",
+    "name_ja": "トウテツ",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "28_isterio",
+    "filename": "28_isterio.png",
+    "name_ja": "イステリオ",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "29_felice",
+    "filename": "29_felice.png",
+    "name_ja": "フェリス",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "30_daze",
+    "filename": "30_daze.png",
+    "name_ja": "ディセ",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "31_mordlim",
+    "filename": "31_mordlim.png",
+    "name_ja": "モルデリム",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "32_melfel",
+    "filename": "32_melfel.png",
+    "name_ja": "メルフェル",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "33_chronea",
+    "filename": "33_chronea.png",
+    "name_ja": "クロネア",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "34_farbell",
+    "filename": "34_farbell.png",
+    "name_ja": "ファーベル",
+    "rarity": "L",
+    "attribute": "tree"
+  },
+  {
+    "id": "35_lance",
+    "filename": "35_lance.png",
+    "name_ja": "ランセル",
+    "rarity": "L",
+    "attribute": "tree"
   }
 ]
