@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Failed to load avatars:', error);
             avatarContainer.innerHTML = '<p style="text-align: center; color: red;">アバターデータの読み込みに失敗しました。</p>';
-            postHeightMessage(); // エラー時も高さを通知
+            postHeightMessage();
         }
     }
 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (avatarsToRender.length === 0) {
             avatarContainer.innerHTML = '<p style="text-align: center; color: #777;">条件に合うアバターが見つかりませんでした。</p>';
-            postHeightMessage(); // 結果がない場合も高さを通知
+            postHeightMessage();
             return;
         }
 
@@ -143,7 +143,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // ⭐ 修正ポイント: 描画が完了した後に高さを親ページに通知
-        postHeightMessage();
+        // 画像の読み込みも待ってから高さを送信するロジックを追加
+        const images = avatarContainer.querySelectorAll('img');
+        let imagesLoaded = 0;
+        const totalImages = images.length;
+    
+        if (totalImages === 0) {
+            postHeightMessage();
+        } else {
+            images.forEach(img => {
+                const imageLoaded = () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImages) {
+                        postHeightMessage();
+                    }
+                };
+                img.addEventListener('load', imageLoaded);
+                img.addEventListener('error', imageLoaded); // エラー時もカウント
+                if (img.complete) {
+                    imageLoaded(); // キャッシュされている場合は即座に実行
+                }
+            });
+        }
     }
 
     function toggleOwnership(avatarId, avatarItemElement) {
@@ -203,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return attributeMap[attributeKey] || attributeKey;
     }
 
-    // ⭐ 修正ポイント: ここにあった postHeightMessage の呼び出しを削除またはコメントアウト
+    // イベントリスナーの設定
     searchInput.addEventListener('input', updateAvatarDisplay);
     rarityFilter.addEventListener('change', updateAvatarDisplay);
     attributeFilter.addEventListener('change', updateAvatarDisplay);
@@ -219,17 +240,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 'https://sthenoskallos.com');
         }
     }
-
-    // ⭐ 修正ポイント: MutationObserver と他のイベントリスナーも不要になるため削除またはコメントアウト
-    // window.addEventListener('load', postHeightMessage);
-    // const observer = new MutationObserver(postHeightMessage);
-    // observer.observe(document.body, {
-    //     attributes: true,
-    //     childList: true,
-    //     subtree: true
-    // });
-    // rarityFilter.addEventListener('change', postHeightMessage);
-    // attributeFilter.addEventListener('change', postHeightMessage);
-    // ownershipFilter.addEventListener('change', postHeightMessage);
-    // searchInput.addEventListener('input', postHeightMessage);
 });
